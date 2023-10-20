@@ -25,7 +25,7 @@
 
         <Style x:Key="Label" TargetType="{x:Type Label}">
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="#86BBD8"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="TextBlock.TextAlignment" Value="Right" />
@@ -35,6 +35,35 @@
                 </Style>
             </Style.Resources>
         </Style>
-        
+
+
+        <!--Couleur pour bouton Jouer (GreenYellow)-->
+
+        <Style x:Key="Jouer" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="GreenYellow"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <!--Couleur pour bouton Stop (Orange)-->
+
+        <Style x:Key="Stop" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
     </Application.Resources>
 </Application>

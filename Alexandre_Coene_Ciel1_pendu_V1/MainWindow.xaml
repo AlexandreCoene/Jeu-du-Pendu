@@ -30,12 +30,13 @@
 
             <!-- Grid utiliser pour l'image du pendu -->
 
-            <Grid Grid.Column="0" Background="#FF386FA4">
+            <Grid Grid.Column="0" Grid.Row="1" Background="#FF386FA4">
+                <Image Name="IMG_pendu" Source="/Image/Pendu 1.png"></Image>
             </Grid>
             
             <!-- Grid utiliser pour l'alaphabet (bouton de chaque lettres) -->
 
-            <Grid Grid.Column="1" Background="#FF133C55">
+            <Grid Grid.Column="1" Name="Bouton_Grid" Background="#FF133C55">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -100,17 +101,28 @@
 
                 <!-- Grid pour les fonctionnalités suplémentaire -->
 
-            <Grid Grid.Column="2" Background="#FF84D2F6"/>
-            
-   </Grid>
+            <Grid Grid.Column="2" Background="#FF84D2F6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Name="ElapsedTimeLabel" Content="Temps ecoulé: 00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="16"></Label>
+            </Grid>
+        </Grid>
 
-        <!-- Grid pour le mot a chercher -->
+        <!-- Grid pour le mot a chercher et les boutons jouer et stop -->
 
         <Grid Grid.Row="2" Background="#FF59A5D8">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+
+            <Label Name="Mot_Trouver" Content="Mot à trouver : ***********" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontSize="20"></Label>
+            <Button Grid.Column="1" Grid.Row="0" Name="BTN_Play" Content="Jouer" Style="{StaticResource Jouer}"></Button>
+            <Button Grid.Column="2" Grid.Row="0" Name="BTN_Stop" Content="Stop" Style="{StaticResource Stop}"></Button>
         </Grid>
 
     </Grid>

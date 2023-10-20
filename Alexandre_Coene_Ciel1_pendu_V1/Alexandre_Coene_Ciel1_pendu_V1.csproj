@@ -94,5 +94,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\1.png" />
+    <Resource Include="Image\2.png" />
+    <Resource Include="Image\3.png" />
+    <Resource Include="Image\4.png" />
+    <Resource Include="Image\5.png" />
+    <Resource Include="Image\6.png" />
+    <Resource Include="Image\7.png" />
+    <Resource Include="Image\Pendu 1.PNG" />
+    <Resource Include="Image\Pendu 2.PNG" />
+    <Resource Include="Image\Pendu 3.PNG" />
+    <Resource Include="Image\Pendu 4.PNG" />
+    <Resource Include="Image\Pendu 5.PNG" />
+    <Resource Include="Image\Pendu 6.PNG" />
+    <Resource Include="Image\Pendu 7.PNG" />
+    <Resource Include="Image\Pendu 8 head.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
