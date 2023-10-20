@@ -96,7 +96,6 @@
                 <!-- Cinquième ligne de l'alphabet -->
 
                 <Button x:Name="BTN_Z" Content="Z" Grid.Row="5" Grid.Column="2" Click="BTN_Click"></Button>
-                
             </Grid>
 
                 <!-- Grid pour les fonctionnalités suplémentaire -->
@@ -106,7 +105,14 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
                 <Label Name="ElapsedTimeLabel" Content="Temps ecoulé: 00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="16"></Label>
             </Grid>
         </Grid>

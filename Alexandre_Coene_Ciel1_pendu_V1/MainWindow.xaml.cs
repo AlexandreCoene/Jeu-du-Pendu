@@ -105,8 +105,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
 
 
 
-
-
         // -------------------------------------------------------------------------- Enlève une vie et utilise la fonction update de l'image ------------------------------------
         private void HandleIncorrectGuess() // Gère une devinette incorrecte
         {
@@ -116,15 +114,11 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
 
 
 
-
-
         // -------------------------------------------------------------------------- Ajout de la lettre au mot ------------------------------------------------------------------ 
         private void UpdateWordLabel() // Met à jour le libellé du mot
         {
             Mot_Trouver.Content = "Mot à trouver : " + new string(guessedWord); // Met à jour le libellé du mot
         }
-
-
 
 
 
@@ -138,8 +132,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
                 IMG_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Image/Pendu {imageIndex}.png", UriKind.Relative)); // Met à jour l'image du pendu
             }
         }
-
-
 
 
 
@@ -170,7 +162,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
                 if (element is Button) // Vérifie si le bouton est un bouton
                 {
                     ((Button)element).IsEnabled = true; // Active le bouton
-                  //  ((Button)element).Style = (Style)FindResource("MaterialDesignFlatButton"); // Remet le style du bouton par défaut
                 }
             }
         }
@@ -202,6 +193,10 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
                     btn.IsEnabled = true; // Reactive les bouton (enlève l'opacity)
                 } 
             }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
