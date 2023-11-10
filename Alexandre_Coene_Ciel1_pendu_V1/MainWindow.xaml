@@ -109,7 +109,7 @@
                 </Grid.RowDefinitions>
 
                 <Label Name="ElapsedTimeLabel" Content="Temps ecoulé: 00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="18"></Label>
-                <Button Name="Indice" Content="Indice" Grid.Row="2" Grid.Column="1" FontSize="25" Click="BTN_Indice_Click"></Button>
+                <Button Name="Indice" Content="Indice" Grid.Row="2" Grid.Column="1" FontSize="25" Click="BTN_Indice_Click" Style="{StaticResource Jouer}"></Button>
                 <Label x:Name="ViesLabel" Content="Vies restantes : 7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" HorizontalContentAlignment="Center" />
             </Grid>
         </Grid>

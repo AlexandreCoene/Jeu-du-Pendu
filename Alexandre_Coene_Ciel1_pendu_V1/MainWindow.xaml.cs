@@ -19,7 +19,7 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
     public partial class MainWindow : Window // Classe partielle MainWindow
     {
         private Random random = new Random(); // Génère un nombre aléatoire
-        private string[] wordList = { "PATATE", "PENDU", "ECRAN", "PRISE", "MOBILE", "SOURIS", "CLAVIER", "CODE", "GENTIL", "CPU", "GPU", "HTML", "Python", "JAVA"}; // Liste des mots
+        private string[] wordList = { "PATATE", "PENDU", "ECRAN", "PRISE", "MOBILE", "SOURIS", "CLAVIER", "CODE", "GENTIL", "CPU", "GPU", "HTML", "PYTHON", "JAVA"}; // Liste des mots
         private string selectedWord; // Mot sélectionné
         private int maxAttempts = 7; // Nombre de tentatives maximum
         private int attemptsLeft; // Tentatives restantes
