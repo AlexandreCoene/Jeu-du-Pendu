@@ -10,15 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
+using System.Windows.Navigation; 
+using System.Windows.Shapes; 
+using System.Windows.Threading; // Ajout de la librairie pour le timer
 
 namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
 {
     public partial class MainWindow : Window // Classe partielle MainWindow
     {
-        private string[] wordList = { "PROGRAMME", "PENDU", "MONITEUR", "PRISE", "LOGICIEL", "SOURIS", "CLAVIER", "CODE" }; // Liste des mots
+        private Random random = new Random(); // Génère un nombre aléatoire
+        private string[] wordList = { "PATATE", "PENDU", "ECRAN", "PRISE", "MOBILE", "SOURIS", "CLAVIER", "CODE", "GENTIL", "CPU", "GPU", "HTML", "Python", "JAVA"}; // Liste des mots
         private string selectedWord; // Mot sélectionné
         private int maxAttempts = 7; // Nombre de tentatives maximum
         private int attemptsLeft; // Tentatives restantes
@@ -38,19 +39,45 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             gameTimer.Tick += GameTimer_Tick; // Associe l'événement au minuteur
         }
 
-
+        private void BTN_Indice_Click(object sender, RoutedEventArgs e) // Gère l'événement Click du bouton BTN_Indice
+        {
+            if (attemptsLeft > 0) // Vérifie si le joueur a encore des tentatives
+            {
+                // Recherchez la première lettre non dévoilée dans le mot
+                for (int i = 0; i < guessedWord.Length; i++) // Parcours le mot deviné
+                {
+                    if (guessedWord[i] == '_') // Vérifie si la lettre n'a pas encore été dévoilée
+                    {
+                        guessedWord[i] = selectedWord[i]; // Dévoilez la lettre
+                        UpdateWordLabel(); // Met à jour le libellé du mot
+                        attemptsLeft--; // Décrémentez le nombre de tentatives restantes
+                        UpdateHangmanImage(); // Mettez à jour l'image du pendu
+                        break; // Sortez de la boucle après avoir trouvé une lettre à dévoiler
+                    }
+                }
+            }
+        }
 
         // -------------------------------------------------------------------------- Start Game -----------------------------------------------------------------------------------
         private void StartGame(object sender, RoutedEventArgs e) // Démarre le jeu
         {
             attemptsLeft = maxAttempts; // Initialise le nombre de tentatives restantes
-            IMG_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Image/Pendu 1.png", UriKind.Relative)); // Initialise l'image du pendu
-            selectedWord = wordList[new Random().Next(wordList.Length)]; // Sélectionne un mot aléatoire
+            IMG_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Image/Pendu 1.png", UriKind.Relative)); // Met à jour l'image du pendu
+            selectedWord = wordList[random.Next(wordList.Length)]; // Sélectionne un mot aléatoire
             guessedWord = new char[selectedWord.Length]; // Initialise le mot deviné
 
             for (int i = 0; i < selectedWord.Length; i++) // Parcours le mot sélectionné
             {
-                guessedWord[i] = '_'; // Initialise le mot deviné
+                char currentChar = selectedWord[i]; // Récupère le caractère actuel
+                if (char.IsLetter(currentChar)) // Vérifie si le caractère est une lettre
+                {
+                    guessedWord[i] = '_'; // Initialise le mot deviné
+                }
+                else
+                {
+                    // Conservez le caractère d'origine (espace, ponctuation, etc.)
+                    guessedWord[i] = currentChar; // Initialise le mot deviné
+                }
             }
             UpdateWordLabel(); // Met à jour le libellé du mot
             EnableAlphabetButtons(true); // Active les boutons de l'alphabet
@@ -58,8 +85,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             elapsedTime = TimeSpan.Zero; // Initialise le temps écoulé
             gameTimer.Start(); // Démarre le minuteur
         }
-
-
 
         // -------------------------------------------------------------------------- Stop Game ----------------------------------------------------------------------------------
         private void StopGame(object sender, RoutedEventArgs e) // Arrête le jeu
@@ -69,8 +94,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             gameTimer.Stop(); // Arrête le minuteur
         }
 
-
-
         // -------------------------------------------------------------------------- Event / Boutons ----------------------------------------------------------------------------
         private void BTN_Click(object sender, RoutedEventArgs e) // Gère l'événement Click des boutons
         {
@@ -78,7 +101,7 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             clickedButton.IsEnabled = false; // Désactive le bouton cliqué
             char guessedLetter = clickedButton.Content.ToString()[0]; // Récupère la lettre devinée
 
-            if (selectedWord.Contains(guessedLetter))
+            if (selectedWord.Contains(guessedLetter)) // Vérifie si la lettre devinée est dans le mot
             {
                 UpdateGuessedWord(guessedLetter); // Met à jour le mot deviné
             }
@@ -88,8 +111,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             }
             UpdateWordLabel(); // Met à jour le libellé du mot
         }
-
-
 
         // -------------------------------------------------------------------------- Met à jour le mot deviné -------------------------------------------------------------------
         private void UpdateGuessedWord(char guessedLetter) // Met à jour le mot deviné
@@ -103,37 +124,30 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             }
         }
 
-
-
         // -------------------------------------------------------------------------- Enlève une vie et utilise la fonction update de l'image ------------------------------------
         private void HandleIncorrectGuess() // Gère une devinette incorrecte
         {
             attemptsLeft--; // Décrémente le nombre de tentatives restantes
-            UpdateHangmanImage(); // Met à jour l'image du pendu
+            UpdateHangmanImage(); // Met à jour l'image du penduprivate void UpdateLivesLabel()
+                ViesLabel.Content = "Vies restantes : " + attemptsLeft; // Met à jour le nombres de vies restantes      
         }
-
-
 
         // -------------------------------------------------------------------------- Ajout de la lettre au mot ------------------------------------------------------------------ 
         private void UpdateWordLabel() // Met à jour le libellé du mot
         {
-            Mot_Trouver.Content = "Mot à trouver : " + new string(guessedWord); // Met à jour le libellé du mot
+            string spacedWord = string.Join(" ", guessedWord); // Ajoute un espace entre chaque lettre
+            Mot_Trouver.Content = "Mot à trouver : " + spacedWord; // Met à jour le libellé du mot
         }
 
-
-
         // -------------------------------------------------------------------------- Update Image ------------------------------------------------------------------------------- 
-        private void UpdateHangmanImage() // Met à jour l'image du pendu
+       private void UpdateHangmanImage() // Met à jour l'image du pendu
         {
             int imageIndex = maxAttempts - attemptsLeft + 1; // Calcule l'index de l'image à afficher
             if (imageIndex >= 1 && imageIndex <= maxAttempts) // Vérifie si l'index est valide
             {
-                // IMG_1.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Alexandre_Coene_Ciel1_pendu_V1;/Image/ {imageIndex}.png", UriKind.Relative)); // Met à jour l'image du pendu
                 IMG_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Image/Pendu {imageIndex}.png", UriKind.Relative)); // Met à jour l'image du pendu
             }
         }
-
-
 
         // -------------------------------------------------------------------------- Start Game ---------------------------------------------------------------------------------
         private void EnableAlphabetButtons(bool enable) // Active ou désactive les boutons de l'alphabet
@@ -148,8 +162,6 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
                 }
             }
         }
-
-
 
         // -------------------------------------------------------------------------- Remettre l'opacité des boutons ---------------------------------------------------------------
         private void ResetButtonStyles() // Réinitialise le style des boutons par défaut
@@ -166,7 +178,11 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
             }
         }
 
-
+        // -------------------------------------------------------------------------- Enlève une vie sur le compteur ---------------------------------------------------------------
+        private void UpdateLivesLabel() // Met à jour le libellé du nombre de vies restantes
+        {
+            ViesLabel.Content = "Vies restantes : " + attemptsLeft; // Met à jour le libellé du nombre de vies restantes
+        }
 
         // -------------------------------------------------------------------------- Arrêt et incrémentation du Timer -------------------------------------------------------------
         private void GameTimer_Tick(object sender, EventArgs e) // Gère le minuteur
@@ -194,9 +210,7 @@ namespace Alexandre_Coene_Ciel1_pendu_V1 // Espace de nommage du projet
                 } 
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
         }
     }
-}
+

@@ -20,7 +20,7 @@
         </Grid>
 
         <!-- Colonne du milieu -->
-        
+
         <Grid Grid.Row="1" Name="Grid_Middle">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"></ColumnDefinition>
@@ -33,7 +33,7 @@
             <Grid Grid.Column="0" Grid.Row="1" Background="#FF386FA4">
                 <Image Name="IMG_pendu" Source="/Image/Pendu 1.png"></Image>
             </Grid>
-            
+
             <!-- Grid utiliser pour l'alaphabet (bouton de chaque lettres) -->
 
             <Grid Grid.Column="1" Name="Bouton_Grid" Background="#FF133C55">
@@ -52,9 +52,9 @@
                     <RowDefinition Height="*" ></RowDefinition>
                     <RowDefinition Height="*" ></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!-- Première ligne de l'alphabet -->
-                
+
                 <Button x:Name="BTN_A" Content="A" Grid.Row="0" Grid.Column="0" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_B" Content="B" Grid.Row="0" Grid.Column="1" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_C" Content="C" Grid.Row="0" Grid.Column="2" Click="BTN_Click"></Button>
@@ -62,7 +62,7 @@
                 <Button x:Name="BTN_E" Content="E" Grid.Row="0" Grid.Column="4" Click="BTN_Click"></Button>
 
                 <!-- Première ligne de l'alphabet -->
-                
+
                 <Button x:Name="BTN_F" Content="F" Grid.Row="1" Grid.Column="0" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_G" Content="G" Grid.Row="1" Grid.Column="1" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_H" Content="H" Grid.Row="1" Grid.Column="2" Click="BTN_Click"></Button>
@@ -70,7 +70,7 @@
                 <Button x:Name="BTN_J" Content="J" Grid.Row="1" Grid.Column="4" Click="BTN_Click"></Button>
 
                 <!-- Deuxième ligne de l'alphabet -->
-                
+
                 <Button x:Name="BTN_K" Content="K" Grid.Row="2" Grid.Column="0" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_L" Content="L" Grid.Row="2" Grid.Column="1" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_M" Content="M" Grid.Row="2" Grid.Column="2" Click="BTN_Click"></Button>
@@ -86,7 +86,7 @@
                 <Button x:Name="BTN_T" Content="T" Grid.Row="3" Grid.Column="4" Click="BTN_Click"></Button>
 
                 <!-- Quatrième ligne de l'alphabet -->
-                
+
                 <Button x:Name="BTN_U" Content="U" Grid.Row="4" Grid.Column="0" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_V" Content="V" Grid.Row="4" Grid.Column="1" Click="BTN_Click"></Button>
                 <Button x:Name="BTN_W" Content="W" Grid.Row="4" Grid.Column="2" Click="BTN_Click"></Button>
@@ -98,7 +98,7 @@
                 <Button x:Name="BTN_Z" Content="Z" Grid.Row="5" Grid.Column="2" Click="BTN_Click"></Button>
             </Grid>
 
-                <!-- Grid pour les fonctionnalités suplémentaire -->
+            <!-- Grid pour les fonctionnalités suplémentaire -->
 
             <Grid Grid.Column="2" Background="#FF84D2F6">
                 <Grid.RowDefinitions>
@@ -107,13 +107,10 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
 
-                <Label Name="ElapsedTimeLabel" Content="Temps ecoulé: 00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="16"></Label>
+                <Label Name="ElapsedTimeLabel" Content="Temps ecoulé: 00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="18"></Label>
+                <Button Name="Indice" Content="Indice" Grid.Row="2" Grid.Column="1" FontSize="25" Click="BTN_Indice_Click"></Button>
+                <Label x:Name="ViesLabel" Content="Vies restantes : 7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" HorizontalContentAlignment="Center" />
             </Grid>
         </Grid>
 
@@ -126,9 +123,9 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Name="Mot_Trouver" Content="Mot à trouver : ***********" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontSize="20"></Label>
-            <Button Grid.Column="1" Grid.Row="0" Name="BTN_Play" Content="Jouer" Style="{StaticResource Jouer}"></Button>
-            <Button Grid.Column="2" Grid.Row="0" Name="BTN_Stop" Content="Stop" Style="{StaticResource Stop}"></Button>
+            <Label Name="Mot_Trouver" Content="Mot à trouver : " Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontSize="20"></Label>
+            <Button Grid.Column="2" Grid.Row="0" Name="BTN_Play" Content="Jouer" Style="{StaticResource Jouer}"></Button>
+            <Button Grid.Column="1" Grid.Row="0" Name="BTN_Stop" Content="Mourir" Style="{StaticResource Stop}"></Button>
         </Grid>
 
     </Grid>
